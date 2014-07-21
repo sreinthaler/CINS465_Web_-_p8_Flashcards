@@ -1,0 +1,12 @@
+
+<div class="maindiv">
+
+<% if (@deck.cards.size >= 1 ) %>
+  <%= link_to "Practice", test_practice_q_deck_path(num: 1) %>
+  <%= link_to "Regex Test", test_regex_q_deck_path(num: 1) %>
+<% else %>
+  <p>Deck is empty.</p>
+<% end %>
+
+</div>
+

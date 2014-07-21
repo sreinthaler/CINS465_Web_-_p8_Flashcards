@@ -1,0 +1,32 @@
+
+<div class="maindiv">
+
+<p>
+Card #<%= @card_num %> Answer (Back)
+</p>
+
+<h1><%= @back %></h1>
+
+<% if @is_correct %>
+  Correct
+<% else %>
+  Incorrect
+<% end %>
+
+<p>Answer: <%= @back %></p>
+<p>Regex: <%= @regex %></p>
+<p>You Answered: <%= @answer %></p>
+
+<% if @next_num <= @deck.cards.count %>
+  <%= link_to "Next Card", test_regex_q_deck_path(@deck.id, :num => @next_num, :c => @num_correct) %>
+<% else %>
+  <%= link_to "End of Deck", test_regex_end_deck_path(@deck.id, :num => @card_num, :c => @num_correct) %>
+<% end %>
+
+<p>
+<%= link_to "Exit", @deck %>
+</p>
+
+
+</div>
+

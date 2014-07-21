@@ -1,0 +1,19 @@
+
+<div class="maindiv">
+
+<p>
+Card #<%= @card_num %> Question (Front)
+</p>
+
+<h1><%= @front %></h1>
+
+<%= form_tag(test_regex_a_deck_path(@deck.id), method: "get") do %>
+  Enter your answer:
+  <%= text_field_tag(:ans) %>
+  <%= hidden_field_tag :num, @card_num %>
+  <%= hidden_field_tag :c, @num_correct %>
+  <%= submit_tag("Answer") %>
+<% end %>
+
+</div>
+

@@ -1,0 +1,72 @@
+<h1> <%= "Editing " + @deck.title %> </h1>
+
+<div class="maindiv">
+
+<%= render 'form' %>
+
+<h3>Cards</h3>
+<table class="basictable">
+  <tr>
+    <th>#</th>
+    <th>Front</th>
+    <th>Back</th>
+    <th>Answer (RegEx)</th>
+    <th>Edit/Delete</th>
+  </tr>
+  <% @deck_cards.each do |card| %>
+    <%= form_for [@deck, card] do |f| %>
+      <tr>
+        <td><%= card.deck_card_id %></td>
+        <td><%= f.text_field :front %></td>
+        <td><%= f.text_field :back %></td>
+        <td><%= f.text_field :regex %></td>
+        <td>
+          <%= f.submit %>
+          <%= link_to "Delete", deck_card_path(card.deck_id, card.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to "Up", move_deck_card_path(card.deck_id, card.id, :dir => :up), method: :patch %>
+          <%= link_to "Down", move_deck_card_path(card.deck_id, card.id, :dir => :down), method: :patch %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+  <tr>
+    <%= form_for [@deck, @new_card] do |f| %>
+        <td>---</td>
+        <td><%= f.text_field :front %></td>
+        <td><%= f.text_field :back %></td>
+        <td><%= f.text_field :regex %></td>
+        <td><%= f.submit %></td>
+    <% end %>
+  </tr>
+</table>
+
+<h3>Tags</h3>
+<table class="basictable">
+  <tr>
+    <th>Tag</th>
+    <th>Edit/Delete</th>
+  </tr>
+  <% @deck_tags.each do |tag| %>
+    <%= form_for [@deck, tag] do |f| %>
+      <tr>
+        <td><%= f.text_field :tag_string %></td>
+        <td>
+          <%= f.submit %>
+          <%= link_to "Delete", deck_tag_path(tag.deck_id, tag.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+  <tr>
+    <%= form_for [@deck, @new_tag] do |f| %>
+        <td><%= f.text_field :tag_string %></td>
+        <td><%= f.submit %></td>
+    <% end %>
+  </tr>
+</table>
+
+<%= link_to 'Show', @deck %> |
+<%= link_to 'Back', decks_path %>
+
+</div>
+

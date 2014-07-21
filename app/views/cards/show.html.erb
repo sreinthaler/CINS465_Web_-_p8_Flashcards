@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Deck:</strong>
+  <%= @card.deck_id %>
+</p>
+
+<p>
+  <strong>Deck card:</strong>
+  <%= @card.deck_card_id %>
+</p>
+
+<p>
+  <strong>Front:</strong>
+  <%= @card.front %>
+</p>
+
+<p>
+  <strong>Back:</strong>
+  <%= @card.back %>
+</p>
+
+<p>
+  <strong>Regex:</strong>
+  <%= @card.regex %>
+</p>
+
+<%= link_to 'Edit', edit_deck_card_path(@card.deck_id, @card) %> |
+<%= link_to 'Back', deck_cards_path(@card.deck_id) %>

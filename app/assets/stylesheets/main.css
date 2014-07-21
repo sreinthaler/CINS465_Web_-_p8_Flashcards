@@ -1,0 +1,37 @@
+/*******/
+/* All */
+/*******/
+
+body {
+   background-color: #999999; }
+
+#maindiv {
+   margin: 3em; }
+
+h1 {
+   text-align: center; }
+
+
+.basictable {
+   border: 1px solid #999999; }
+
+.basictable tr th {
+   background-color: #999999;
+   color: #222222;
+   padding-left: 1em;
+   padding-right: 1em; }
+
+.basictable tr td {
+   border: 1px solid #999999;
+   padding-left: 1em;
+   padding-right: 1em; }
+
+
+#spoiler {
+   color: #000000;
+   background-color: #000000; }
+
+#spoiler:hover {
+   color: #000000;
+   background-color: #999999; }
+

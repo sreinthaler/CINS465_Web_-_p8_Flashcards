@@ -1,0 +1,44 @@
+<h1>Home</h1>
+
+<div class="maindiv">
+
+<% if user_signed_in? %>
+  <h3>My Decks</h3>
+   <table class="basictable">
+      <tr>
+         <th>Title</th>
+         <th>Subject</th>
+         <th>Tags</th>
+         <th>Edit</th>
+      </tr>
+      <% @decks_owned.each do |deck| %>
+         <tr>
+            <td><%= link_to deck.title, deck_path(deck) %></td>
+            <td><%= link_to deck.subject, search_results_path( :q_subject => deck.subject ) %></td>
+            <td><%= deck.tags.sort{ |x,y| x.tag_string <=> y.tag_string }.map{ |search_tag| link_to search_tag.tag_string, search_results_path( :q_tag => search_tag.tag_string ) }.join(", ").html_safe %></td>
+            <td><%= link_to "Edit", edit_deck_path(deck) %></td>
+         </tr>
+      <% end %>
+   </table>
+<% end %>
+
+<h3>Public Decks</h3>
+<table class="basictable">
+   <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Subject</th>
+      <th>Tags</th>
+   </tr>
+   <% @decks_public.each do |deck| %>
+      <tr>
+         <td><%= link_to deck.title, deck_path(deck) %></td>
+         <td><%= link_to deck.user.email, user_path(deck.user_id) %></td>
+         <td><%= link_to deck.subject, search_results_path( :q_subject => deck.subject ) %></td>
+         <td><%= deck.tags.sort{ |x,y| x.tag_string <=> y.tag_string }.map{ |search_tag| link_to search_tag.tag_string, search_results_path( :q_tag => search_tag.tag_string ) }.join(", ").html_safe %></td>
+      </tr>
+   <% end %>
+</table>
+
+</div>
+

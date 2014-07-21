@@ -1,0 +1,29 @@
+
+<div class="maindiv">
+
+<p>
+Card #<%= @card_num %> Answer (Back)
+</p>
+
+<h1><%= @back %></h1>
+
+
+<% if @prev_num > 0 %>
+  <%= link_to "Previous Card", test_practice_q_deck_path(@deck.id, :num => @prev_num) %> |
+<% else %>
+  ------------- |
+<% end %>
+
+<%= link_to "Show Question (Front)", test_practice_q_deck_path(@deck.id, :num => @card_num) %> | 
+
+<% if @next_num <= @deck.cards.count %>
+  <%= link_to "Next Card", test_practice_q_deck_path(@deck.id, :num => @next_num) %>
+<% else %>
+  -------------
+<% end %>
+<p>
+<%= link_to "Exit", @deck %>
+</p>
+
+</div>
+

@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<div class="maindiv">
+
+<h3>Deck Info</h3>
+
+<p>
+  <strong>Title:</strong>
+  <%= @deck.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @deck.user.email %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @deck.subject %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @deck.description %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @deck.tags.sort{ |x,y| x.tag_string <=> y.tag_string }.map{ |t| t.tag_string }.join(", ") %>
+</p>
+
+
+<% if user_signed_in? && @deck.user_id == current_user.id %>
+  <% if @deck.public_deck == true %>
+    <p>This deck is public</p>
+  <% else %>
+    <p>This deck is private</p>
+  <% end %>
+<% end %>
+
+<h3>Options</h3>
+<% if user_signed_in? && @deck.user_id == current_user.id %>
+  <p><%= link_to 'Edit', edit_deck_path(@deck) %></p>
+<% end %>
+
+
+<% if (@deck.cards.size >= 1 ) %>
+  <p><%= link_to "Practice Test", test_practice_q_deck_path(num: 1) %></p>
+  <p><%= link_to "Regex Test", test_regex_q_deck_path(num: 1, c: 0) %></p>
+<% end %>
+
+
+
+</div>
+

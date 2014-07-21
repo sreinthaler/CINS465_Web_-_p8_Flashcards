@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  deck_id: 1
+  deck_card_id: 1
+  front: MyString
+  back: MyString
+  regex: MyString
+
+two:
+  deck_id: 1
+  deck_card_id: 1
+  front: MyString
+  back: MyString
+  regex: MyString

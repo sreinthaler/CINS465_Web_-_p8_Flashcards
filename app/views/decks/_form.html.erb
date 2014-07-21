@@ -1,0 +1,32 @@
+<%= form_for(@deck) do |f| %>
+  <% if @deck.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@deck.errors.count, "error") %> prohibited this deck from being saved:</h2>
+
+      <ul>
+      <% @deck.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h3>Deck Info</h3>
+  <table class="basictable">
+    <tr>
+      <th>Title</th>
+      <th>Subject</th>
+      <th>Description</th>
+      <th>Public?</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td><%= f.text_field :title %></td>
+      <td><%= f.text_field :subject %></td>
+      <td><%= f.text_field :description %></td>
+      <td><%= f.check_box :public_deck %></td>
+      <td><%= f.submit %></td>
+    </tr>
+  </table>
+
+<% end %>

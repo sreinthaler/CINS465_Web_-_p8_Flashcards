@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cins465P8</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+
+
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <%= link_to "Flashcards", root_path, :class => "navbar-brand" %>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Search", search_path %></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+        <p class="navbar-text">Signed in as <%= current_user.email %> </p>
+        <li><%= link_to "My User Page", user_path(current_user.id) %></li>
+        <li><%= link_to "Create New Deck", new_deck_path %></li>
+        <li> <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> </li>
+      <% else %>
+        <li> <%= link_to "Sign up", new_user_registration_path %> </li>
+        <li> <%= link_to "Sign in", new_user_session_path %> </li>
+      <% end %>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
+
+
+
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<h1>Search Decks</h1>
+
+<div class="maindiv">
+
+<div id="formbox">
+  <%= form_tag(search_results_path, method: "get") do %>
+    <p><table id="searchtable">
+      <tr>
+        <td><%= label_tag(:q_title, "Title:") %></td>
+        <td><%= text_field_tag(:q_title) %></td>
+      </tr>
+      <tr>
+        <td><%= label_tag(:q_author, "Author:") %></td>
+        <td><%= text_field_tag(:q_author) %></td>
+      </tr>
+      <tr>
+        <td><%= label_tag(:q_subject, "Subject:") %></td>
+        <td><%= text_field_tag(:q_subject) %></td>
+      </tr>
+      <tr>
+        <td><%= label_tag(:q_tag, "Tag:") %></td>
+        <td><%= text_field_tag(:q_tag) %></td>
+      </tr>
+      <tr>
+        <td><%= label_tag(:sort, "Sort by:") %></td>
+        <td>
+          <%= select_tag(:sort, options_for_select([ "title", "author", "subject" ], "title") ) %>
+          <%= select_tag(:order, options_for_select([ "asc", "desc" ], "asc") ) %>
+        </td>
+      </tr>
+    </table></p>
+    <p><%= submit_tag("Search") %></p>
+  <% end %>
+</div>
+
+</div>
+

@@ -1,0 +1,35 @@
+<h1>Listing cards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Deck</th>
+      <th>Deck card</th>
+      <th>Front</th>
+      <th>Back</th>
+      <th>Regex</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cards.each do |card| %>
+      <tr>
+        <td><%= card.deck_id %></td>
+        <td><%= card.deck_card_id %></td>
+        <td><%= card.front %></td>
+        <td><%= card.back %></td>
+        <td><%= card.regex %></td>
+        <td><%= link_to 'Show', card %></td>
+        <td><%= link_to 'Edit', edit_card_path(card) %></td>
+        <td><%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Card', new_card_path %>

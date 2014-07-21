@@ -1,0 +1,20 @@
+<p>This is a placeholder for a deck test page </p>
+
+<p>
+Card #:
+<%= @card_num %>
+</p>
+
+
+<% if @prev_num > 0 %>
+  <%= link_to "Previous Card", test_practice_deck_path(@deck.id, :num => @prev_num) %> | 
+<% end %>
+<% if @next_num < @deck.cards.count %>
+  <%= link_to "Next Card", test_practice_deck_path(@deck.id, :num => @next_num) %>
+<% end %>
+<p>
+<%= link_to "Exit", test_home_deck_path(@deck.id) %>
+</p>
+
+
+
